@@ -1,0 +1,38 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "resobj_train",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "6,7"
+            },
+            "args": [
+                "--config-file", "configs/resobj_retinanet_R_50_FPN_1x.py",
+                "--num-gpus", "2"
+            ]
+        },
+        {
+            "name": "resobj_eval",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "6,7"
+            },
+            "args": [
+                "--config-file", "configs/resobj_retinanet_R_50_FPN_1x.py",
+                "--num-gpus", "2", "--eval-only", "train.init_checkpoint=output/model_0004999.pth"
+            ]
+        }
+    ]
+}
